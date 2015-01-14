@@ -1,0 +1,17 @@
+float tyomatkaPolkupyoralla_km = 2.530;
+int opintopisteet_Suoritettu = 17;
+int opintopisteet_Tutkinto = 1800;
+int  tehtyjenDemojenLukumaara = 1;
+char kirjanEkaKirjain = 'Z';
+float voittajanAika_juoksu100m_s = 9.047;
+
+int mansikanKiloHinta;			liukulukutyyppi olisi parempi.
+double first,second,final;		final voisi olla third, laittaisin itse kaikki omille riveille.
+char omaNimi;					nimi ei mahdu yhteen kirjaimeen, string tyyppi olisi oikein.
+double metriMm;					sekava, pelkkä "metria" sana riittää vaikka olisi tarkempi luku.
+double tuntejaVuorokaudessa;	kokonaislukutyyppi on parempi vaihtoehto.
+real nopeus;					real ei ole Javan lukutyyppi.
+double AuringonEtaisyys;		muuttujan nimen pitäisi alkaa pienellä kirjaimella, lukuyksikön voisi mainita.
+int kuukaudenKeskiLampo:		lopussa kaksoispiste eikä puolipistettä, voisi olla liukuluku.
+int kissoja,2_kanaa,kolmeKoiraa;boolean lukutyyppi kanoille ja koirille, muutoin olisi sekava.
+int i,j,l,I;					sekava, kirjain "i" sekä pienenä että isona. Lisäksi "i" kannattaa ajatella "varattuna" sanana. 
