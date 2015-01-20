@@ -25,7 +25,7 @@ public class StringTokens
     }
     
     /**
-     * 
+     * Parse string for tokens and return them as a list. 
      * @param str String to be parsed for separate tokens.
      * @return List of tokens. will be empty if none found.
      */

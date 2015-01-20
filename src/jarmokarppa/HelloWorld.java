@@ -1,9 +1,22 @@
 package jarmokarppa;
 
-public class HelloWorld {
+/**
+ * 
+ * @author Jami
+ * @version 20.1.2015
+ *
+ */
 
-    public static void main(String[] args) {
-        System.out.println("Halloo sinä siellä");
+public class HelloWorld
+{
+    /**
+     * Printout string to console.
+     * @param yello String to be printout to console.
+     */
+    
+    public void yellToWorld(String yello)
+    {
+        System.out.println(yello);
     }
-
 }
+

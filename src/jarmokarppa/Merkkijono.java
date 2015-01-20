@@ -11,7 +11,6 @@ public class Merkkijono
 {
     /**
      * Promote every second character in string to upper case starting from second.
-     * 
      * @param str Original string to be handled but not touched.
      * @return New and modified instance of a string.
      */
