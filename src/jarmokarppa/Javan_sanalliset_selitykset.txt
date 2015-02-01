@@ -1,0 +1,10 @@
+Kapselointi.
+- piilottaa toteutuksen eli tekee oliosta "mustan laatikon"
+- yhdistää toteutuksen ja siihen kuuluvat tietorakenteet
+- eristää olion kaikesta muusta
+
+Javan lähdekoodin tiedostonimi.
+Nimi on .java päätteinen luokkanimi, esimerkiksi Tuote.java.
+
+Javan käännöstulos tavukoodin tiedostonimi.
+Nimi on .class päätteinen luokkanimi, esimerkiksi Tuote.class.
