@@ -11,8 +11,21 @@ import fi.jyu.mit.graphics.EasyWindow;
 
 public class Lumiukko
 {
+    private double sade;
+    private EasyWindow window;
+    
     /**
-     * Piirt‰‰ lumiukon annettuun paikkaan
+     * Oletusmuodostin.
+     */
+    
+    public Lumiukko()
+    {
+        sade = 0;
+        window = null;
+    }
+    
+    /**
+     * Piirt‰‰ lumiukon annettuun paikkaan.
      * 
      * @param w
      * @param x
@@ -24,12 +37,67 @@ public class Lumiukko
     
     public void piirraLumiukko(EasyWindow w, double x, double y, double isonPallonSade, double keskiPallonSade, double pikkuPallonSade)
     {
-        double keskiPallonY = y + isonPallonSade + keskiPallonSade; //ratkaise t‰h‰n keskiPallonY
-        double pikkuPallonY = keskiPallonY + keskiPallonSade + pikkuPallonSade; //ratkaise t‰h‰n pikkuPallonY
+        if (window == null)
+        {
+            // Testitarkoitus. T‰m‰ on ensimm‰inen ukko joka piirret‰‰n.
+            window = w;
+        }
+        
+        if (w == window)
+        {
+            // Ukot jotka piirret‰‰n t‰h‰n ikkunaan, piirret‰‰n vanhalla tyylill‰.
             
-        w.addCircle(x,y,isonPallonSade); //piirt‰‰ ison pallon
-        w.addCircle(x,keskiPallonY,keskiPallonSade); //piirt‰‰ keskipallon
-        w.addCircle(x,pikkuPallonY,pikkuPallonSade); //piirt‰‰ pikkupallon
+            double keskiPallonY = y + isonPallonSade + keskiPallonSade; //ratkaise t‰h‰n keskiPallonY
+            double pikkuPallonY = keskiPallonY + keskiPallonSade + pikkuPallonSade; //ratkaise t‰h‰n pikkuPallonY
+            
+            w.addCircle(x,y,isonPallonSade); //piirt‰‰ ison pallon
+            w.addCircle(x,keskiPallonY,keskiPallonSade); //piirt‰‰ keskipallon
+            w.addCircle(x,pikkuPallonY,pikkuPallonSade); //piirt‰‰ pikkupallon
+        }
+        else
+        {
+            // Uusi tapa piirt‰‰ ukkoja, toiseen ikkunaan.
+            
+            Piste paikka = new Piste(x, y);
+            piirraPallo(w, paikka, isonPallonSade);
+            piirraPallo(w, paikka, keskiPallonSade);
+            piirraPallo(w, paikka, pikkuPallonSade);
+            piirraPallo(w, paikka);
+        }
+    }
+
+    /**
+     * Piirt‰‰ yhden pallon ja p‰ivitt‰‰ keskipisteen paikan.
+     * 
+     * @param w             Ikkuna johon piirret‰‰n.
+     * @param keskipiste    Alempana olevan pallon yl‰reunan koordinaatit, p‰ivittyy.
+     * @param pallonSade    Pallon s‰de joka m‰‰r‰‰ pallon koon.
+     */
+    
+    public void piirraPallo(EasyWindow w, Piste keskipiste, double pallonSade)
+    {
+        // Pallon keskipiste on s‰teen verran edellisen pallon yl‰reunasta.
+        keskipiste.addToY(pallonSade);
+        w.addCircle(keskipiste.getX(), keskipiste.getY(), pallonSade);
+        
+        // T‰m‰n pallon yl‰reuna lasketaan valmiiksi seuraavaa palloa varten.
+        keskipiste.addToY(pallonSade);
+        
+        // Jemmaa s‰de mahdollista myˆhemp‰‰ k‰yttˆ‰ varten.
+        sade = pallonSade;
+    }
+
+    /**
+     * Piirt‰‰ yhden pallon ja p‰ivitt‰‰ keskipisteen paikan.
+     * Pallon koko on sama kuin viimeeksi uudella tapaa piirretyll‰ pallolla.
+     * 
+     * @param w             Ikkuna johon piirret‰‰n.
+     * @param keskipiste    Alempana olevan pallon yl‰reunan koordinaatit, p‰ivittyy.
+     */
+    
+    public void piirraPallo(EasyWindow w, Piste keskipiste)
+    {
+        piirraPallo(w, keskipiste, sade);
     }
     
     /**
@@ -86,6 +154,7 @@ public class Lumiukko
         EasyWindow window = new EasyWindow();
         
         window.scale(0, 0, 1000, 1000);
+        window.setTitle("Tavallisia lumiukkoja");
         
         //Luodaan lumiukko-olio
         Lumiukko lumiukko = new Lumiukko ();
@@ -100,5 +169,26 @@ public class Lumiukko
         
         // N‰ytet‰‰n ikkuna
         window.showWindow();
+
+        
+        // Koek‰ytet‰‰n uusi nelj‰ palloisen lumiukon rakentelutapa.
+        // Tehd‰‰n ukot ihan omaan ikkunaan testitarkoituksessa.
+        EasyWindow window2 = new EasyWindow();
+        
+        window2.scale(0, 0, 1000, 1000);
+        window2.setLocation(600, 0);
+        window2.setTitle("Nykyaikaisia neli-palloisia lumiukkoja Piste-luokan avulla");
+        
+        // Piirret‰‰n lumiukko.
+        lumiukko.piirraLumiukko(window2, 100, 70, 30, 20, 10);
+
+        lumiukko.piirraLumiukko(window2, 230, 70);
+        lumiukko.piirraLumiukko(window2, 410, 70, 80);
+        lumiukko.piirraLumiukko(window2, 610, 70, 80, 60); 
+        lumiukko.piirraLumiukko(window2, 810, 70, 80, 60, 40);
+        
+        // N‰ytet‰‰n ikkuna
+        window2.showWindow();
+        
     }
 }

@@ -194,5 +194,13 @@ public class Koulu
         
         System.out.println("Poikia kouluun jäi: " + koulu.laskeSukupuolijakaumaKoulussa(false) + "kpl");
         System.out.println("Tyttöjä kouluun jäi: " + koulu.laskeSukupuolijakaumaKoulussa(true) + "kpl");
+        
+        // Uudet oppilaat koulun penkille.
+        koulu.lisaaOppilas("Aku Vankka", false);
+        koulu.lisaaOppilas("Mad Onna", true);
+        koulu.tulostaOppilasTiedot();
+
+        System.out.println("Poikia koulussa on: " + koulu.laskeSukupuolijakaumaKoulussa(false) + "kpl");
+        System.out.println("Tyttöjä koulussa on: " + koulu.laskeSukupuolijakaumaKoulussa(true) + "kpl");
     }
 }
